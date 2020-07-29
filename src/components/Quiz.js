@@ -1,6 +1,6 @@
 import React, { useContext, Component } from "react";
-
-// import config from "../config";
+import Context from "../Context";
+import config from "../config";
 
 class Quiz extends Component {
   static defaultProps = {
@@ -9,17 +9,19 @@ class Quiz extends Component {
     setEmail: () => {},
   };
 
-  // sendUserData(userData) {
-  //   return fetch(`${config.API_ENDPOINT}/user_data`, {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify({ ...userData }),
-  //   }).then(() => {
-  //     this.props.history.push("/dashboard");
-  //   });
-  // }
+  static contextType = Context;
+
+  sendUserData(userData) {
+    return fetch(`${config.API_ENDPOINT}/user_data`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ ...userData }),
+    }).then(() => {
+      this.props.history.push("/dashboard");
+    });
+  }
   // add to context email
   handleSubmit = (e) => {
     e.preventDefault();
@@ -106,7 +108,7 @@ class Quiz extends Component {
       hydration: hydration.checked ? "true" : "false",
     };
     // console.log(email.value);
-    this.context.setEmail(email.value);
+    this.context.handleSetEmail(email.value);
     this.sendUserData(payload1);
   };
   render() {
