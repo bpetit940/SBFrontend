@@ -43,18 +43,19 @@ class App extends Component {
                 );
               }}
             />
+            <Route
+            path={"/quiz"}
+            render={(routeProps) => {
+              return (
+                <Quiz handleSetEmail={this.handleSetEmail} {...routeProps} />
+              );
+            }}
+          />
+          <Route path={"/dashboard"} component={Dashboard} /> 
             {/* <Route path={"/signUp"} component={SignUp} />
             <Route path={"/signIn"} component={SignIn} />
             <Route path={"/passwordReset"} component={PasswordReset} />
-            <Route
-              path={"/quiz"}
-              render={(routeProps) => {
-                return (
-                  <Quiz handleSetEmail={this.handleSetEmail} {...routeProps} />
-                );
-              }}
-            />
-            <Route path={"/dashboard"} component={Dashboard} /> */}
+            */}
           </Switch>
         </Router>
       </Context.Provider>

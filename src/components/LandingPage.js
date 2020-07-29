@@ -38,8 +38,10 @@ class LandingPage extends Component {
           stack to add on to your life routine. Beyond sport performance, anyone
           can benenfit from adding a stack to their diet.{" "}
         </p>
+        {/* We should include logic to show link to quiz if their email isn't a match, and take them to their results if it is. */}
         <Link to="/quiz">Take the Quiz</Link>
         <form onSubmit={this.handleSetEmail}>
+          <label for="email">Enter Your Email:</label>
           <input type="email" name="email"></input>
           <button className="emailbtn" type="submit">
             Submit
